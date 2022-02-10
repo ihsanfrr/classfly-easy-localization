@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ClassFlyScreen extends StatefulWidget {
   const ClassFlyScreen({
@@ -35,11 +36,11 @@ class _ClassFlyScreenState extends State<ClassFlyScreen> {
                   const SizedBox(
                     height: 40,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      'Find the perfect',
-                      style: TextStyle(
+                      'title'.tr(),
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 32,
                       ),
@@ -58,19 +59,19 @@ class _ClassFlyScreenState extends State<ClassFlyScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: RichText(
-                          text: const TextSpan(
+                          text: TextSpan(
                             children: [
                               TextSpan(
-                                text: 'Music',
-                                style: TextStyle(
+                                text: 'first_title'.tr(),
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               TextSpan(
-                                text: ' Teacher',
-                                style: TextStyle(
+                                text: 'second_title'.tr(),
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 32,
                                 ),
@@ -84,11 +85,11 @@ class _ClassFlyScreenState extends State<ClassFlyScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      'Learn easily different type of music instruments',
-                      style: TextStyle(
+                      'content'.tr(),
+                      style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 16,
                       ),
@@ -124,9 +125,9 @@ class _ClassFlyScreenState extends State<ClassFlyScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Text(
-                                'Select a Language',
-                                style: TextStyle(
+                              Text(
+                                'select'.tr(),
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
@@ -143,9 +144,9 @@ class _ClassFlyScreenState extends State<ClassFlyScreen> {
                                     groupValue: languages,
                                     onChanged: (val) => setLocale(context, val),
                                   ),
-                                  const Text(
-                                    'Indonesian',
-                                    style: TextStyle(
+                                  Text(
+                                    'id'.tr(),
+                                    style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                     ),
@@ -160,9 +161,9 @@ class _ClassFlyScreenState extends State<ClassFlyScreen> {
                                     groupValue: languages,
                                     onChanged: (val) => setLocale(context, val),
                                   ),
-                                  const Text(
-                                    'English',
-                                    style: TextStyle(
+                                  Text(
+                                    'en'.tr(),
+                                    style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                     ),
@@ -177,9 +178,9 @@ class _ClassFlyScreenState extends State<ClassFlyScreen> {
                                     groupValue: languages,
                                     onChanged: (val) => setLocale(context, val),
                                   ),
-                                  const Text(
-                                    'Espanol',
-                                    style: TextStyle(
+                                  Text(
+                                    'es'.tr(),
+                                    style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                     ),
@@ -201,10 +202,10 @@ class _ClassFlyScreenState extends State<ClassFlyScreen> {
                     color: const Color(0xFF202737),
                     borderRadius: BorderRadius.circular(60),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
-                      'Select a Language',
-                      style: TextStyle(
+                      'select'.tr(),
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -224,6 +225,20 @@ class _ClassFlyScreenState extends State<ClassFlyScreen> {
     setState(() {
       languages = language;
     });
+
+    if (languages == 'Indonesia') {
+      context.setLocale(
+        const Locale('id', 'ID'),
+      );
+    } else if (languages == 'Inggris') {
+      context.setLocale(
+        const Locale('en', 'US'),
+      );
+    } else {
+      context.setLocale(
+        const Locale('es', 'ES'),
+      );
+    }
 
     Future.delayed(const Duration(seconds: 1), () {
       Navigator.pop(context);
